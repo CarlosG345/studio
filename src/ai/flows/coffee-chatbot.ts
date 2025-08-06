@@ -46,17 +46,18 @@ export async function coffeeChatbotRecommendations(input: CoffeeChatbotRecommend
 const prompt = ai.definePrompt({
   name: 'coffeeChatbotRecommendationsPrompt',
   input: {
-    schema: CoffeeChatbotRecommendationsInputSchema,
+    schema: CoffeeChatbotRecommendationsInputSchema.extend({
+      useHistory: z.boolean(),
+    }),
   },
   output: {
     schema: CoffeeChatbotRecommendationsOutputSchema,
   },
-  tools: [shouldConsiderHistoryTool],
   prompt: `You are a coffee expert chatbot. A user is asking for coffee recommendations.
 
   User query: {{{query}}}
 
-  {{#if (await shouldConsiderHistoryTool this)}}
+  {{#if useHistory}}
   Based on their order history: {{{orderHistory}}} and loyalty points: {{{loyaltyPoints}}}, provide a personalized recommendation.
   {{else}}
   Provide a general coffee recommendation.
@@ -71,7 +72,8 @@ const coffeeChatbotRecommendationsFlow = ai.defineFlow(
     outputSchema: CoffeeChatbotRecommendationsOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    const useHistory = await shouldConsiderHistoryTool(input);
+    const {output} = await prompt({...input, useHistory});
     return output!;
   }
 );
