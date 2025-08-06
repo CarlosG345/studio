@@ -7,7 +7,7 @@ export default function Home() {
   return (
     <div className="space-y-12">
       <section>
-        <Card className="overflow-hidden shadow-lg">
+        <Card className="overflow-hidden shadow-lg border-primary/50 border-2">
           <CardContent className="p-0">
             <div className="relative h-64 md:h-96">
               <Image
@@ -15,11 +15,11 @@ export default function Home() {
                 alt="Latte art"
                 layout="fill"
                 objectFit="cover"
-                className="brightness-75"
-                data-ai-hint="latte art"
+                className="brightness-50"
+                data-ai-hint="futuristic city grid"
               />
               <div className="absolute inset-0 flex flex-col items-center justify-center text-center text-white p-4">
-                <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl drop-shadow-lg">
+                <h1 className="font-headline text-4xl md:text-6xl lg:text-7xl drop-shadow-[0_0_8px_hsl(var(--primary))]">
                   Experience Coffee Artistry
                 </h1>
                 <p className="mt-4 max-w-2xl text-lg md:text-xl drop-shadow-md">

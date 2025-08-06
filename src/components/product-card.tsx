@@ -11,7 +11,7 @@ type ProductCardProps = {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <Card className="flex flex-col overflow-hidden transition-shadow duration-300 hover:shadow-xl">
+    <Card className="flex flex-col overflow-hidden transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 hover:border-primary/50 border-2 border-transparent">
       <CardHeader className="p-0">
         <Link href={`/menu/${product.id}`} className="block">
           <div className="relative aspect-square">
