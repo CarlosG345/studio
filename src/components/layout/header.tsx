@@ -8,6 +8,7 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import Logo from '@/components/logo';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { ThemeToggleButton } from '@/components/theme-toggle-button';
 
 const navLinks = [
   { href: '/', label: 'Home', icon: Home },
@@ -44,10 +45,11 @@ export default function Header() {
         ))}
       </nav>
 
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <Button variant="ghost" className="hidden lg:inline-flex">
           Cart (0)
         </Button>
+        <ThemeToggleButton />
         <SidebarTrigger className="hidden lg:flex" />
       </div>
     </header>
